@@ -36,16 +36,20 @@ public class App {
         // int[] value = new Int[5];
         // value[0] = 1
         int[] value = { 1, 4, 78, 23, 6};
-        int max = 0;
-        int min = 0;
-        for (int i = 0; i > value.length; i++){
+        int max = value[0];
+        int min = value[0];
+        float average = 0;
+        for (int i = 0; i < value.length; i++){
             if(value[i] > max){
                 max = value[i];
             }else  if(value[i] < min){
                 min = value[i];
             }
+        average += value[i];
         }
+        average = average/value.length;
         System.out.println("O valor max é:" +max);
         System.out.println("O valor min é:" +min);
+        System.out.println("Média:"+average);
     }
 }
