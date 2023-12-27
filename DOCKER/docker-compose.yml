@@ -1,0 +1,29 @@
+
+version: '3.8'
+
+networks:
+  web_network:
+    driver: overlay
+
+volumes:
+  site_conf:
+
+services:
+  web-server:
+    image: httpd:latest
+    ports: "80:80"
+    deploy:
+      placement:
+        constraints:
+          - "node.role==worker"
+      mode: replicated
+      replicas: 2
+      resource:
+        cpus: "0.50"
+        memory: 256M
+    restart: always
+    networks:
+      - web_network
+    volumes:
+      - /dir/site/html:/var/www/html
+      - site_conf:/etc/httpd
